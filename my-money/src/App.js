@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import useGet from './hooks/useGet'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const url = 'https://mymoney-diego.firebaseio.com/movimentacoes/2020-01.json'
+const url2 = 'https://mymoney-diego.firebaseio.com/movimentacoes/2020-02.json'
+
+const App = () => {
+	const data = useGet(url)
+	const data2 = useGet(url2)
+	return (
+    <div>
+			{data.loading && <p>Loading...</p>}
+			<h1>My money</h1>
+			<pre>{JSON.stringify(data)}</pre>
+			<pre>{JSON.stringify(data2)}</pre>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
