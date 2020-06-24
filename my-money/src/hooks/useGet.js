@@ -19,9 +19,8 @@ const reducer = (state, action) => {
 	}
 	return state
 }
-	
 
-const useGet = url => {
+const useGet = url => { //https://mymoney-diego.firebaseio.com/movimentacoes/2020-01.json
 	//reducer
 	const [state, dispatch] = useReducer(reducer, {
 		//estado interno inicial
@@ -31,7 +30,7 @@ const useGet = url => {
 	useEffect(() => {
 		dispatch({ type: 'REQUEST' })
 		axios
-			.get(url)
+			.get(url) //https://mymoney-diego.firebaseio.com/movimentacoes/2020-01.json
 			.then(res => {
 				dispatch({
 					type: 'SUCCESS',
